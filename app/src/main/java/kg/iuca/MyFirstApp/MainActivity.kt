@@ -26,28 +26,33 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Task1()
+                    Task1And2()
                 }
             }
         }
     }
-
     @Composable
-    fun Task1() {
+    fun Task1And2() {
 
+        val countNum = remember { mutableStateOf(0) }
         val helloWorld = remember { mutableStateOf("Привет, мир!") }
 
         Column {
             Text(text = helloWorld.value)
-
             Button(onClick = {
                 helloWorld.value = "Кнопка нажата"
             }) {
-                Text("Button")
+                Text("Нажми на меня")
             }
 
+
+
+            Text(text = "Counting number: ${countNum.value}")
+            Button(onClick = {
+                countNum.value += 1
+            }) {
+                Text("Я счетчик нажатий")
+            }
         }
-
-
     }
 }
